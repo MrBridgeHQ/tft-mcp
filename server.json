@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.mr-bridge/tft-mcp-server",
+  "title": "Teamfight Tactics MCP Server",
+  "description": "Teamfight Tactics data & AI coaching for Claude and ChatGPT - 19 tools, built-in Riot key.",
+  "version": "2.0.0",
+  "websiteUrl": "https://apify.com/mrbridge/tft-mcp-server?fpr=mrbridge",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mrbridge--tft-mcp-server.apify.actor/mcp",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {apify_token}" }
+      ],
+      "variables": {
+        "apify_token": {
+          "description": "Your Apify API token - get one at https://console.apify.com/account/integrations",
+          "isSecret": true,
+          "isRequired": true
+        }
+      }
+    }
+  ]
+}

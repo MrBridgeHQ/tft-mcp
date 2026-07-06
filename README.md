@@ -1,64 +1,59 @@
 # Teamfight Tactics MCP Server
 
-> Connect AI assistants to TFT data via MCP - player profiles, ranked stats, match history, composition analysis, augment optimization, and AI-powered coaching.
+> Hosted MCP server connecting **Claude**, **ChatGPT**, and any MCP client to **Teamfight Tactics** data and AI-powered coaching - **19 tools**, **built-in Riot API key**, zero setup.
 
-**[Try it on Apify Store](https://apify.com/mrbridge/teamfight-tactics-mcp-server---ai-game-analysis?fpr=mrbridge)** | Pay-per-event | Free tier available
+This repository is the public home and documentation for the **TFT MCP Server**, a remote (hosted) [Model Context Protocol](https://modelcontextprotocol.io) server. It runs on [Apify](https://apify.com/mrbridge/tft-mcp-server?fpr=mrbridge) in Standby mode - there's nothing to install or self-host. It's also listed in the [official MCP registry](https://registry.modelcontextprotocol.io) as `com.mr-bridge/tft-mcp-server`.
 
-## Features
+## Connect in 2 minutes
 
-- **10 MCP tools** for comprehensive TFT data access
-- Player profiles - search players by Riot ID across all regions
-- Ranked stats - tier, rank, LP, win/loss ratio
-- Match history - recent matches with detailed statistics
-- Composition analysis - identify the strongest comps and your best playstyles
-- Augment optimization - discover which augments have the highest win rates
-- Live game lookup - see what your opponents are building in real time
-- AI-powered coaching - personalized advice tailored to your rank and playstyle
-- Works with **Claude Desktop, Claude Code, ChatGPT** and any MCP-compatible client
-
-## Quick Start
-
-1. **[Open the Actor on Apify](https://apify.com/mrbridge/teamfight-tactics-mcp-server---ai-game-analysis?fpr=mrbridge)** and get your free API token
-2. Connect your AI client using the MCP endpoint below
-3. Start asking about any TFT player, match, or composition
-
-### Claude Desktop
-
-Go to **Settings → MCP Servers → Add Custom Connector** and paste:
+Connection URL (same for every client) - replace `YOUR_APIFY_TOKEN` with your [Apify API token](https://console.apify.com/account/integrations):
 
 ```
-https://mrbridge--teamfight-tactics-mcp-server---ai-game-analysis.apify.actor/mcp?token=YOUR_APIFY_TOKEN
+https://mrbridge--tft-mcp-server.apify.actor/mcp?token=YOUR_APIFY_TOKEN
 ```
 
-### Claude Code
+- **Claude Desktop** - Settings → Connectors → Add custom connector → paste the URL.
+- **ChatGPT** (Plus / Pro / Team / Enterprise) - Settings → Connectors → enable developer mode → Add custom connector → paste the URL.
+- **Apify Universal MCP** - add `https://mcp.apify.com?tools=mrbridge/tft-mcp-server` to your existing config.
 
-Add the endpoint above to your MCP settings, then run `/permissions` and add `mcp__TFT__*` to the Allow list.
+**No Riot API key needed** - a built-in, dedicated key ships with the server. No developer account, no 24-hour key to rotate.
 
-## Example Prompts
+## What it does
 
-Once connected, your AI assistant can handle prompts like:
+Ask your AI assistant in plain language; it pulls your real ranked games and coaches you on them.
 
-- *"What are the strongest comps in the current meta?"*
-- *"Analyze my last 10 games - am I forcing comps too often?"*
-- *"Which augments have the highest win rate for Reroll comps?"*
-- *"Compare my TFT stats with a Challenger player"*
-- *"I keep finishing 5th-8th. What am I doing wrong?"*
+**19 tools**, grouped:
+
+- **Player & matches** - account, summoner, ranked (TFT / Hyper Roll / Double Up), full profile, match history, full match details, live game.
+- **AI analysis** - placement diagnosis, champion analysis, improvement tips, player comparison.
+- **Ladders & platform** - Challenger / Grandmaster / Master, any tier ladder, Hyper Roll rated ladder, league by id, server status, featured games.
+
+All 16 regions (EUW, EUNE, NA, KR, BR, LAN, LAS, OCE, TR, RU, JP, PH, SG, TH, TW, VN). Champion mastery and match timeline are exposed for compatibility but report "not available for TFT" - Riot provides no such endpoint for Teamfight Tactics.
+
+## Example prompts
+
+- "Look up Kataamak#6015 on EUW - what's their rank and average placement?"
+- "Analyze my last 20 ranked games and tell me what's costing me LP."
+- "Give me 3 comps that fit how I play, with items and level-by-level spikes."
+- "I'm in a game now - look up my lobby and tell me who's the biggest threat."
 
 ## Pricing
 
-Pay-per-event - you only pay for the tools you actually use. The free tier gives you **$5 free credits every month**, enough for hundreds of tool calls.
+Pay-per-event on Apify - you only pay when a tool runs, no idle cost. **$5 free credits every month.** See the [Apify Actor page](https://apify.com/mrbridge/tft-mcp-server?fpr=mrbridge) for the full breakdown.
+
+## Related MCP servers
+
+- [League of Legends MCP Server](https://apify.com/mrbridge/lol-mcp-server?fpr=mrbridge) - 26 tools: profiles, ranked, match history, live game, AI coaching
+- [ESPN MCP Server](https://apify.com/mrbridge/espn-mcp-server?fpr=mrbridge) - live scores, standings and odds across 25+ leagues
+- [Latest News MCP Server](https://apify.com/mrbridge/latest-news-mcp-server?fpr=mrbridge) - 14 tools over 27 free news and data APIs
+- [Todoist AI Assistant](https://apify.com/mrbridge/todoist-ai-assistant?fpr=mrbridge) - 35 tools for AI-powered task management
 
 ## Links
 
-- **Apify Store**: [Teamfight Tactics MCP Server](https://apify.com/mrbridge/teamfight-tactics-mcp-server---ai-game-analysis?fpr=mrbridge)
-- **Author**: [mrbridge on Apify](https://apify.com/mrbridge?fpr=mrbridge)
-
-## Related MCP Servers
-
-- [League of Legends MCP Server](https://apify.com/mrbridge/lol-mcp-server?fpr=mrbridge) - 13 tools for LoL player data, match history, and AI coaching
-- [ESPN MCP Server](https://apify.com/mrbridge/espn-mcp-server?fpr=mrbridge) - Live scores, standings, and stats across 25+ sports leagues
-- [Todoist MCP Server](https://apify.com/mrbridge/todoist-ai-assistant?fpr=mrbridge) - 35 tools for AI-powered task management
+- **Run it:** [Apify Actor](https://apify.com/mrbridge/tft-mcp-server?fpr=mrbridge)
+- **Official MCP registry:** `com.mr-bridge/tft-mcp-server`
+- **Built by [MrBridge](https://mr-bridge.com)** - [MCP server catalog](https://mr-bridge.com/mcp-servers) · [what is MCP?](https://mr-bridge.com/articles/what-is-mcp-model-context-protocol)
 
 ---
 
-*Built by [mrbridge](https://apify.com/mrbridge?fpr=mrbridge) - Usage must comply with Riot Games API Terms and Conditions.*
+The server runs as a managed Apify Actor; this repository hosts documentation and the public registry manifests (`server.json`, `glama.json`) only.
